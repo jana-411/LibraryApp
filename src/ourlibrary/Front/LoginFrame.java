@@ -27,6 +27,8 @@ public class LoginFrame extends JFrame implements ActionListener, ItemListener {
     private JPanel containerPanel;
     private CardLayout cardLayout;
 
+    private int regId;
+
     // Cozy Library Cozy Palette (Larger Dimensions)
     private final Color BG_COLOR = new Color(247, 243, 233);      // Soft Cream
     private final Color ACCENT_COLOR = new Color(139, 94, 60);   // Warm Brown
@@ -302,14 +304,16 @@ public class LoginFrame extends JFrame implements ActionListener, ItemListener {
             //test......
             for (HashMap.Entry<Integer, Student> entry
                     : Mangment.allStudents.entrySet()) {
+                regId=entry.getKey();
 
                 System.out.println("ID = " + entry.getKey());
                 System.out.println("Name = " + entry.getValue().getName());
                 System.out.println("Status = " + entry.getValue().getStatue());
                 System.out.println("----------------");
-            }
 
-            JOptionPane.showMessageDialog(this, "Profile Registration Success!");
+            }
+            JOptionPane.showMessageDialog(this, "Profile Registration Success!,  your id is "+regId);
+
             cardLayout.show(containerPanel, "LoginCard");
         } else if (e.getSource() == backLogin) {
             cardLayout.show(containerPanel, "LoginCard");
